@@ -187,7 +187,7 @@ function App() {
       </header>
 
       {/* MAIN CONTENT SECTION */}
-      <main className="max-w-6xl mx-auto px-8 py-48 space-y-64 relative">
+      <main className="max-w-6xl mx-auto px-8 py-20 space-y-32 relative">
         {/* TECH STACK */}
         <section id="tech" className="scroll-mt-32">
           <h2 className="text-2xl font-bold mb-20 flex items-center gap-4">
