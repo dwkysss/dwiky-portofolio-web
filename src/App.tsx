@@ -177,12 +177,12 @@ function App() {
       </header>
 
       <main
-        className="max-w-6xl mx-auto px-8 space-y-40 pb-32 animate-fade-in-up"
+        className="max-w-6xl mx-auto px-8 py-32 space-y-48 relative z-10 animate-fade-in-up"
         style={{ animationDelay: "0.3s" }}
       >
         {/* SECTION TECH STACK DENGAN LOGO & TOOLTIP */}
-        <section>
-          <h2 className="text-2xl font-bold mb-10 flex items-center gap-4">
+        <section className="relative">
+          <h2 className="text-2xl font-bold mb-12 flex items-center gap-4">
             <span className="h-px w-12 bg-purple-500"></span> Tech Stack
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -232,8 +232,8 @@ function App() {
         </section>
 
         {/* SECTION PROJECTS */}
-        <section>
-          <h2 className="text-2xl font-bold mb-10 flex items-center gap-4">
+        <section className="relative pt-20">
+          <h2 className="text-2xl font-bold mb-12 flex items-center gap-4">
             <span className="h-px w-12 bg-blue-500"></span> Selected Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -371,7 +371,7 @@ function App() {
         </div>
       </main>
 
-      <footer className="max-w-6xl mx-auto py-16 border-t border-gray-900 text-center opacity-50 hover:opacity-100 transition-opacity">
+      <footer className="max-w-6xl mx-auto px-8 py-20 border-t border-gray-900 text-center">
         <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.4em]">
           Handcrafted by{" "}
           <span className="text-white font-black">Dwiky Sumarlin</span> • 2026
