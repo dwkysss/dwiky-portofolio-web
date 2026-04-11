@@ -101,55 +101,68 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-gray-100 font-sans selection:bg-blue-500/30 overflow-x-hidden">
       <style>{`
-      @keyframes revealUp {
-        0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
-        100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-      }
-      .animate-reveal { animation: revealUp 1.2s cubic-bezier(0.2, 0.6, 0.2, 1) forwards; }
-      .delay-1 { animation-delay: 0.1s; }
-      .delay-2 { animation-delay: 0.3s; }
-      .delay-3 { animation-delay: 0.5s; }
-      .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
-    `}</style>
+        @keyframes revealUp {
+          0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        .animate-reveal { animation: revealUp 1.2s cubic-bezier(0.2, 0.6, 0.2, 1) forwards; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
+        .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
+      `}</style>
 
       {/* HEADER / HERO SECTION */}
-      <header className="max-w-6xl mx-auto px-8 min-h-screen flex flex-col justify-center relative border-b border-gray-900/50">
-        <div className="absolute top-12 left-8 right-8 flex justify-between items-center animate-reveal">
-          <div className="text-white font-black tracking-tighter text-2xl">
+      <header className="relative w-full min-h-[100vh] flex flex-col justify-center max-w-6xl mx-auto px-8">
+        {/* Navigation - Fixed position adjustment for better spacing */}
+        <div className="absolute top-16 left-8 right-8 flex justify-between items-center animate-reveal z-50">
+          <div className="text-white font-black tracking-tighter text-2xl border-b-2 border-blue-500">
             DS.
           </div>
-          <nav className="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500">
-            <a href="#projects" className="hover:text-white transition">
+          <nav className="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.4em] font-black text-gray-500">
+            <a
+              href="#tech"
+              className="hover:text-white transition-colors duration-300"
+            >
+              Stack
+            </a>
+            <a
+              href="#projects"
+              className="hover:text-white transition-colors duration-300"
+            >
               Projects
             </a>
-            <a href="#research" className="hover:text-white transition">
+            <a
+              href="#research"
+              className="hover:text-white transition-colors duration-300"
+            >
               Research
-            </a>
-            <a href="#contact" className="hover:text-white transition">
-              Contact
             </a>
           </nav>
         </div>
 
-        <div className="space-y-6">
-          <span className="text-blue-500 font-bold text-xs uppercase tracking-[0.5em] block animate-reveal delay-1">
+        {/* Hero Typography */}
+        <div className="relative pt-20">
+          <span className="text-blue-500 font-bold text-xs uppercase tracking-[0.6em] mb-8 block animate-reveal delay-1">
             Available for Work
           </span>
-          <h1 className="text-6xl md:text-[120px] font-black text-white leading-[0.85] tracking-tighter animate-reveal delay-2">
+          <h1 className="text-6xl md:text-[115px] font-black text-white leading-[0.8] tracking-tighter animate-reveal delay-2">
             DESIGNING <br />
             <span className="text-gray-800">INTELLIGENT</span> <br />
             SOLUTIONS.
           </h1>
 
-          <div className="mt-16 flex flex-col md:flex-row md:items-end justify-between gap-12 animate-reveal delay-3">
+          <div className="mt-20 flex flex-col md:flex-row md:items-end justify-between gap-16 animate-reveal delay-3">
             <p className="max-w-md text-gray-500 text-xl leading-relaxed font-light">
               Dwiky Sumarlin — Informatics Graduate focusing on{" "}
-              <span className="text-gray-300 font-medium">Computer Vision</span>{" "}
+              <span className="text-gray-200 font-semibold">
+                Computer Vision
+              </span>{" "}
               and{" "}
-              <span className="text-gray-300 font-medium">Data Science</span>.
+              <span className="text-gray-200 font-semibold">Data Science</span>.
             </p>
 
-            <div className="flex gap-6 items-center">
+            <div className="flex gap-8 items-center">
               <a
                 href="https://github.com/dwkysss"
                 target="_blank"
@@ -165,7 +178,7 @@ function App() {
                   <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
                 </svg>
               </a>
-              <button className="px-12 py-6 bg-white text-black font-black rounded-full hover:scale-105 transition-all duration-300">
+              <button className="px-14 py-6 bg-white text-black font-black rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
                 Let's Talk
               </button>
             </div>
@@ -174,20 +187,20 @@ function App() {
       </header>
 
       {/* MAIN CONTENT SECTION */}
-      <main className="max-w-6xl mx-auto px-8 py-32 space-y-56">
+      <main className="max-w-6xl mx-auto px-8 py-48 space-y-64 relative">
         {/* TECH STACK */}
-        <section id="tech" className="animate-reveal">
-          <h2 className="text-2xl font-bold mb-16 flex items-center gap-4">
+        <section id="tech" className="scroll-mt-32">
+          <h2 className="text-2xl font-bold mb-20 flex items-center gap-4">
             <span className="h-px w-12 bg-purple-500"></span> Tech Stack
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
             {Object.entries(techStack).map(([category, items], i) => (
               <div
                 key={category}
-                className="group p-8 rounded-3xl border border-gray-800 bg-gray-900/10 hover:border-gray-600 transition-all duration-500"
+                className="p-10 rounded-[2rem] border border-gray-900 bg-gray-950 hover:border-gray-700 transition-all duration-500"
               >
                 <h3
-                  className={`text-[10px] font-black uppercase tracking-widest mb-8 ${
+                  className={`text-[10px] font-black uppercase tracking-[0.2em] mb-10 ${
                     i === 0
                       ? "text-purple-400"
                       : i === 1
@@ -199,7 +212,7 @@ function App() {
                 >
                   {category}
                 </h3>
-                <div className="flex flex-wrap gap-6">
+                <div className="flex flex-wrap gap-8">
                   {items.map((tech) => (
                     <div
                       key={tech.name}
@@ -208,9 +221,9 @@ function App() {
                       <img
                         src={tech.icon}
                         alt={tech.name}
-                        className="h-8 w-auto grayscale opacity-40 group-hover/icon:grayscale-0 group-hover/icon:opacity-100 group-hover/icon:scale-110 transition-all duration-300"
+                        className="h-8 w-auto grayscale opacity-50 group-hover/icon:grayscale-0 group-hover/icon:opacity-100 group-hover/icon:scale-110 transition-all duration-500 cursor-help"
                       />
-                      <span className="tooltip-text invisible opacity-0 absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-gray-800 text-white text-[10px] font-bold rounded-md whitespace-nowrap transition-all duration-300">
+                      <span className="tooltip-text invisible opacity-0 absolute -top-12 left-1/2 -translate-x-1/2 px-4 py-2 bg-gray-900 text-white text-[10px] font-black rounded-lg whitespace-nowrap transition-all duration-300 border border-gray-800">
                         {tech.name}
                       </span>
                     </div>
@@ -222,20 +235,20 @@ function App() {
         </section>
 
         {/* PROJECTS */}
-        <section id="projects">
-          <h2 className="text-2xl font-bold mb-16 flex items-center gap-4">
+        <section id="projects" className="scroll-mt-32">
+          <h2 className="text-2xl font-bold mb-20 flex items-center gap-4">
             <span className="h-px w-12 bg-blue-500"></span> Selected Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             {projects.map((p) => (
               <div
                 key={p.id}
-                className="group p-10 rounded-[2.5rem] border border-gray-800 bg-gray-900/10 hover:border-blue-500/30 transition-all duration-500"
+                className="group p-12 rounded-[3rem] border border-gray-900 bg-gray-950 hover:border-blue-500/20 transition-all duration-700"
               >
-                <h3 className="text-3xl font-bold text-white mb-6 group-hover:text-blue-400 transition">
+                <h3 className="text-3xl font-black text-white mb-8 group-hover:text-blue-400 transition">
                   {p.title}
                 </h3>
-                <p className="text-gray-500 text-lg leading-relaxed mb-10">
+                <p className="text-gray-500 text-lg leading-relaxed mb-12">
                   {p.description}
                 </p>
                 <div className="flex flex-wrap gap-6">
@@ -254,61 +267,62 @@ function App() {
         </section>
 
         {/* RESEARCH */}
-        <section id="research">
-          <h2 className="text-2xl font-bold mb-16 flex items-center gap-4">
+        <section id="research" className="scroll-mt-32">
+          <h2 className="text-2xl font-bold mb-20 flex items-center gap-4">
             <span className="h-px w-12 bg-orange-500"></span> Research
+            Publication
           </h2>
-          <div className="group bg-gray-900/10 p-12 rounded-[3rem] border border-orange-500/10 hover:border-orange-500/40 transition-all duration-500">
-            <div className="flex flex-col md:flex-row justify-between items-start gap-12">
+          <div className="bg-gray-950 p-16 rounded-[3.5rem] border border-gray-900 hover:border-orange-500/20 transition-all duration-700">
+            <div className="flex flex-col lg:flex-row justify-between items-start gap-16">
               <div className="flex-1">
-                <span className="px-4 py-1 rounded-full text-[10px] font-black bg-orange-500/10 text-orange-400 border border-orange-500/20 uppercase tracking-[0.2em]">
+                <span className="px-5 py-2 rounded-full text-[10px] font-black bg-orange-500/10 text-orange-400 border border-orange-500/10 uppercase tracking-[0.3em]">
                   IEEE ICAICTA 2025
                 </span>
-                <h3 className="text-4xl font-bold text-white mt-8 mb-6">
+                <h3 className="text-4xl md:text-5xl font-black text-white mt-10 mb-8 leading-tight">
                   Signal Classification using Hybrid CNN-Transformer
                   Architectures
                 </h3>
-                <p className="text-gray-500 text-lg leading-relaxed max-w-2xl">
-                  Research on biological signal classification using hybrid deep
-                  learning models for maximum accuracy.
+                <p className="text-gray-500 text-xl leading-relaxed max-w-2xl mb-12">
+                  Riset kolaborasi internasional mengenai klasifikasi sinyal
+                  biologis menggunakan arsitektur deep learning mutakhir.
                 </p>
                 <a
                   href="#"
-                  className="mt-10 px-8 py-4 bg-orange-500/10 border border-orange-500/30 rounded-full text-orange-400 text-sm font-bold inline-flex items-center gap-3 transition hover:bg-orange-500/20"
+                  className="px-10 py-5 bg-orange-500/5 border border-orange-500/20 rounded-full text-orange-400 text-sm font-black inline-flex items-center gap-4 transition hover:bg-orange-500/10 shadow-lg"
                 >
                   View Publication
                 </a>
               </div>
-              <div className="hidden md:flex w-40 h-40 bg-white/5 rounded-[2rem] items-center justify-center border border-white/5 rotate-3 group-hover:rotate-0 transition-all">
-                <span className="text-4xl font-black text-white/10">IEEE</span>
+              <div className="hidden lg:flex w-56 h-56 bg-white/[0.02] rounded-[3rem] items-center justify-center border border-white/5 rotate-3 hover:rotate-0 transition-all duration-700">
+                <span className="text-6xl font-black text-white/5">IEEE</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* EXPERIENCE & EDUCATION */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-40 pb-20">
           <section>
-            <h2 className="text-2xl font-bold mb-16 flex items-center gap-4">
+            <h2 className="text-2xl font-bold mb-20 flex items-center gap-4">
               <span className="h-px w-12 bg-emerald-500"></span> Experience
             </h2>
-            <div className="space-y-16">
+            <div className="space-y-24">
               {experiences.map((exp) => (
                 <div
                   key={exp.id}
-                  className="relative pl-12 border-l border-gray-800 group"
+                  className="relative pl-12 border-l-2 border-gray-900 group"
                 >
-                  <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[6.5px] top-2 shadow-[0_0_20px_rgba(16,185,129,0.3)] group-hover:scale-150 transition-all"></div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <div className="absolute w-5 h-5 bg-emerald-500 rounded-full -left-[11px] top-1 shadow-[0_0_30px_rgba(16,185,129,0.4)] group-hover:scale-125 transition-all"></div>
+                  <h3 className="text-2xl font-black text-white mb-2">
                     {exp.title}
                   </h3>
-                  <p className="text-emerald-500 font-bold mb-4">
+                  <p className="text-emerald-500 font-bold text-lg mb-4">
                     {exp.company}
                   </p>
-                  <p className="text-gray-600 text-xs font-bold uppercase tracking-widest mb-6">
-                    {exp.startDate} - {exp.endDate}
+                  <p className="text-gray-600 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-gray-900 w-fit px-3 py-1 rounded-md">
+                    {exp.startDate} — {exp.endDate}
                   </p>
-                  <p className="text-gray-500 leading-relaxed">
+                  <p className="text-gray-500 text-lg leading-relaxed">
                     {exp.description}
                   </p>
                 </div>
@@ -317,28 +331,28 @@ function App() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-16 flex items-center gap-4">
+            <h2 className="text-2xl font-bold mb-20 flex items-center gap-4">
               <span className="h-px w-12 bg-yellow-500"></span> Education
             </h2>
-            <div className="bg-gray-900/20 p-12 rounded-[2.5rem] border border-gray-800">
-              <h3 className="text-3xl font-bold text-white mb-4">
+            <div className="bg-gray-950 p-14 rounded-[3rem] border border-gray-900 hover:border-yellow-500/10 transition-all duration-700">
+              <h3 className="text-3xl font-black text-white mb-4 leading-tight">
                 Universitas Jenderal Achmad Yani
               </h3>
-              <p className="text-yellow-500 font-bold text-lg mb-8">
+              <p className="text-yellow-500 font-black text-xl mb-10 tracking-tight">
                 Bachelor of Informatics
               </p>
-              <ul className="space-y-6 text-gray-500">
-                <li className="flex gap-4">
-                  <span className="text-yellow-500">▹</span> Computer Vision &
-                  Biometric Focus
+              <ul className="space-y-8 text-gray-500 text-lg">
+                <li className="flex gap-5">
+                  <span className="text-yellow-500 font-black">/</span> Computer
+                  Vision & Biometric Systems
                 </li>
-                <li className="flex gap-4">
-                  <span className="text-yellow-500">▹</span> Bangkit Academy
-                  2025 Distinction
+                <li className="flex gap-5">
+                  <span className="text-yellow-500 font-black">/</span> Bangkit
+                  Academy 2025 (Distinction)
                 </li>
-                <li className="flex gap-4">
-                  <span className="text-yellow-500">▹</span> Head of Sport
-                  Saintech Championship '26
+                <li className="flex gap-5">
+                  <span className="text-yellow-500 font-black">/</span> Head of
+                  Sport Saintech Championship '26
                 </li>
               </ul>
             </div>
@@ -346,10 +360,9 @@ function App() {
         </div>
       </main>
 
-      <footer className="max-w-6xl mx-auto px-8 py-24 border-t border-gray-900 text-center">
-        <p className="text-gray-600 text-[10px] font-bold uppercase tracking-[0.6em]">
-          Built with <span className="text-white">Precision</span> by Dwiky
-          Sumarlin • 2026
+      <footer className="max-w-6xl mx-auto px-8 py-32 border-t border-gray-900 text-center">
+        <p className="text-gray-600 text-[10px] font-black uppercase tracking-[0.8em]">
+          Dwiky Sumarlin <span className="text-gray-800 mx-4">•</span> 2026
         </p>
       </footer>
     </div>
