@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 function App() {
+  const { scrollY } = useScroll();
+  const textOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const textY = useTransform(scrollY, [0, 300], [0, -100]);
   // Metadata Logic
   useEffect(() => {
     document.title = "Dwiky Sumarlin | Informatics Graduate & AI Researcher";
@@ -43,7 +47,7 @@ function App() {
       { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB" },
       {
         name: "Java",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+        icon: "public/java.svg",
       },
       {
         name: "TypeScript",
@@ -115,73 +119,98 @@ function App() {
         .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
       `}</style>
 
-      {/* HEADER / HERO SECTION */}
-      <header className="relative w-full min-h-[100vh] flex flex-col justify-center max-w-6xl mx-auto px-8">
-        <div className="absolute top-16 left-8 right-8 flex justify-between items-center animate-reveal z-50">
-          <div className="text-white font-black tracking-tighter text-2xl border-b-2 border-blue-500 cursor-default hover:skew-x-12 transition-transform">
+      {/* HEADER / HERO SECTION - Cinematic Style */}
+      <header className="relative w-full h-screen flex flex-col justify-center max-w-6xl mx-auto px-8 overflow-hidden">
+        {/* Navigasi tetep sama */}
+        <div className="absolute top-16 left-8 right-8 flex justify-between items-center z-50">
+          <div className="text-white font-black tracking-tighter text-2xl border-b-2 border-blue-500">
             DS.
           </div>
           <nav className="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.4em] font-black text-gray-500">
-            {["Stack", "Projects", "Research"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="hover:text-white transition-all duration-300 hover:tracking-[0.6em]"
-              >
-                {item}
-              </a>
-            ))}
+            <a href="#stack" className="hover:text-white transition-all">
+              Stack
+            </a>
+            <a href="#projects" className="hover:text-white transition-all">
+              Projects
+            </a>
+            <a href="#research" className="hover:text-white transition-all">
+              Research
+            </a>
           </nav>
         </div>
 
-        <div className="relative pt-20">
+        {/* Teks Hero dengan Framer Motion */}
+        <motion.div
+          style={{ opacity: textOpacity, y: textY }}
+          className="relative z-10"
+        >
           <span className="text-blue-500 font-bold text-xs uppercase tracking-[0.6em] mb-8 block animate-reveal delay-1">
             Available for Work
           </span>
-          <h1 className="text-6xl md:text-[115px] font-black text-white leading-[0.8] tracking-tighter animate-reveal delay-2">
-            DESIGNING <br />
-            <span className="text-gray-800 hover:text-gray-700 transition-colors duration-700 cursor-default">
-              INTELLIGENT
-            </span>{" "}
+
+          {/* Efek Text Reveal */}
+          <h1 className="text-6xl md:text-[115px] font-black text-white leading-[0.8] tracking-tighter cursor-default">
+            <motion.span
+              initial={{ clipPath: "inset(100% 0 0 0)" }}
+              animate={{ clipPath: "inset(0% 0 0 0)" }}
+              transition={{ duration: 1, ease: [0.2, 0.6, 0.2, 1] }}
+              className="inline-block"
+            >
+              DESIGNING
+            </motion.span>
             <br />
-            SOLUTIONS.
+            <span className="text-gray-800 hover:text-gray-700 transition-colors duration-700">
+              INTELLIGENT
+            </span>
+            <br />
+            <motion.span
+              initial={{ clipPath: "inset(100% 0 0 0)" }}
+              animate={{ clipPath: "inset(0% 0 0 0)" }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.2, 0.6, 0.2, 1] }}
+              className="inline-block"
+            >
+              SOLUTIONS.
+            </motion.span>
           </h1>
+        </motion.div>
 
-          <div className="mt-20 flex flex-col md:flex-row md:items-end justify-between gap-16 animate-reveal delay-3">
-            <p className="max-w-md text-gray-500 text-xl leading-relaxed font-light">
-              Dwiky Sumarlin — Informatics Graduate focusing on{" "}
-              <span className="text-gray-200 font-semibold underline decoration-blue-500 underline-offset-4">
-                Computer Vision
-              </span>{" "}
-              and{" "}
-              <span className="text-gray-200 font-semibold underline decoration-cyan-500 underline-offset-4">
-                Data Science
-              </span>
-              .
-            </p>
+        {/* Deskripsi bawah Hero */}
+        <motion.div
+          style={{ opacity: textOpacity }}
+          className="mt-20 flex flex-col md:flex-row md:items-end justify-between gap-16"
+        >
+          <p className="max-w-md text-gray-500 text-xl leading-relaxed font-light">
+            Dwiky Sumarlin — Informatics Graduate focusing on{" "}
+            <span className="text-gray-200 font-semibold underline decoration-blue-500 underline-offset-4">
+              Computer Vision
+            </span>{" "}
+            and{" "}
+            <span className="text-gray-200 font-semibold underline decoration-cyan-500 underline-offset-4">
+              Data Science
+            </span>
+            .
+          </p>
 
-            <div className="flex gap-8 items-center">
-              <a
-                href="https://github.com/dwkysss"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-16 h-16 flex items-center justify-center border border-gray-800 rounded-full hover:bg-white hover:text-black hover:rotate-[360deg] transition-all duration-700 shadow-2xl"
+          <div className="flex gap-8 items-center">
+            <a
+              href="https://github.com/dwkysss"
+              target="_blank"
+              className="w-16 h-16 flex items-center justify-center border border-gray-800 rounded-full hover:bg-white hover:text-black transition-all duration-700"
+            >
+              <svg
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 16 16"
               >
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                </svg>
-              </a>
-              <button className="px-14 py-6 bg-white text-black font-black rounded-full hover:scale-110 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-blue-500/20">
-                Let's Talk
-              </button>
-            </div>
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+              </svg>
+            </a>
+            <button className="px-14 py-6 bg-white text-black font-black rounded-full hover:scale-105 transition-all">
+              Let's Talk
+            </button>
           </div>
-        </div>
+        </motion.div>
       </header>
 
       {/* MAIN CONTENT SECTION */}
