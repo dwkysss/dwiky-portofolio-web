@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [projects, setProjects] = useState([]);
-  const [experiences, setExperiences] = useState([]);
+  const [projects] = useState([
+    {
+      id: 1,
+      title: "Biometric Facial Recognition Attendance",
+      description: "Sistem presensi otomatis menggunakan OpenCV dan ArcFace...",
+      techStack: ["Python", "Flask", "OpenCV"],
+      category: "Computer Vision",
+    },
+    // Tambahkan project lainnya di sini...
+  ]);
 
-  // GANTI BAGIAN INI: Gunakan link Railway kamu
-  const API_URL = "https://dwiky-portofolio-api-production.up.railway.app";
-
-  useEffect(() => {
-    // Ambil Projects dari Railway
-    fetch(`${API_URL}/projects`)
-      .then((res) => res.json())
-      .then((data) => setProjects(data))
-      .catch((err) => console.error("Error projects:", err));
-
-    // Ambil Experiences dari Railway
-    fetch(`${API_URL}/experiences`)
-      .then((res) => res.json())
-      .then((data) => setExperiences(data))
-      .catch((err) => console.error("Error exp:", err));
-  }, []);
+  const [experiences] = useState([
+    {
+      id: 1,
+      title: "Staff Strategic Research and Advocacy",
+      company: "BEM KMF MIPA UNJANI",
+      description: "Menjadi jembatan aspirasi mahasiswa...",
+      startDate: "Juni 2025",
+      endDate: "Januari 2026",
+    },
+  ]);
 
   return (
     <div className="min-h-screen bg-black text-gray-100 p-8 font-sans">
@@ -52,6 +54,110 @@ function App() {
           </button>
         </div>
       </header>
+      {/* SECTION SKILLS */}
+      <section className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
+          <span className="h-px w-12 bg-purple-500"></span> Tech Stack
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Category: Languages */}
+          <div className="p-4 rounded-xl border border-gray-800 bg-gray-900/30">
+            <h3 className="text-purple-400 text-xs font-bold uppercase tracking-widest mb-3">
+              Languages
+            </h3>
+            <div className="flex flex-wrap gap-2 text-sm">
+              <span>Python</span> • <span>Java</span> • <span>TypeScript</span>{" "}
+              • <span>SQL</span>
+            </div>
+          </div>
+
+          {/* Category: Frontend */}
+          <div className="p-4 rounded-xl border border-gray-800 bg-gray-900/30">
+            <h3 className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3">
+              Frontend
+            </h3>
+            <div className="flex flex-wrap gap-2 text-sm">
+              <span>React</span> • <span>Tailwind CSS</span> •{" "}
+              <span>Next.js</span>
+            </div>
+          </div>
+
+          {/* Category: Backend */}
+          <div className="p-4 rounded-xl border border-gray-800 bg-gray-900/30">
+            <h3 className="text-emerald-400 text-xs font-bold uppercase tracking-widest mb-3">
+              Backend
+            </h3>
+            <div className="flex flex-wrap gap-2 text-sm">
+              <span>Spring Boot</span> • <span>Node.js</span> •{" "}
+              <span>Prisma</span> • <span>Flask</span>
+            </div>
+          </div>
+
+          {/* Category: AI & Tools */}
+          <div className="p-4 rounded-xl border border-gray-800 bg-gray-900/30">
+            <h3 className="text-orange-400 text-xs font-bold uppercase tracking-widest mb-3">
+              AI & Tools
+            </h3>
+            <div className="flex flex-wrap gap-2 text-sm">
+              <span>OpenCV</span> • <span>TensorFlow</span> •{" "}
+              <span>Docker</span> • <span>Git</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* SECTION RESEARCH */}
+      <section>
+        <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
+          <span className="h-px w-12 bg-orange-500"></span> Research &
+          Publications
+        </h2>
+        <div className="bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl border border-orange-500/20 shadow-2xl shadow-orange-500/5">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-6">
+            <div className="flex-1">
+              <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-orange-500/10 text-orange-400 border border-orange-500/20 uppercase tracking-tighter">
+                IEEE Xplore Indexed
+              </span>
+              <h3 className="text-2xl font-bold text-white mt-4 leading-tight">
+                Signal Classification using Hybrid CNN-Transformer Architectures
+              </h3>
+              <p className="text-gray-400 mt-4 text-sm leading-relaxed">
+                Mempresentasikan riset mengenai klasifikasi sinyal biologis di
+                konferensi **ICAICTA 2025**. Berkolaborasi dengan Dr. Asep
+                Najmurrohkman dkk. untuk mengoptimalkan akurasi model pada data
+                sinyal kompleks.
+              </p>
+              <div className="mt-6">
+                <a
+                  href="#"
+                  target="_blank"
+                  className="inline-flex items-center gap-2 text-orange-400 font-bold hover:underline"
+                >
+                  Read Publication
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div className="hidden md:block w-32 h-32 bg-orange-500/10 rounded-2xl border border-orange-500/20 flex items-center justify-center">
+              <span className="text-4xl font-black text-orange-500 opacity-50">
+                IEEE
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <main className="max-w-6xl mx-auto space-y-20">
         {/* SECTION PROJECTS */}
