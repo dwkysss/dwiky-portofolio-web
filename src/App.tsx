@@ -41,7 +41,10 @@ function App() {
   const techStack = {
     languages: [
       { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB" },
-      { name: "Java", icon: "https://cdn.simpleicons.org/openjdk/white" },
+      {
+        name: "Java",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      },
       {
         name: "TypeScript",
         icon: "https://cdn.simpleicons.org/typescript/3178C6",
