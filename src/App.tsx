@@ -119,7 +119,7 @@ function App() {
       `}</style>
 
       {/* HEADER / HERO SECTION */}
-      <header className="max-w-6xl mx-auto pt-24 pb-16">
+      <header className="max-w-6xl mx-auto pt-12 pb-16">
         <div className="flex justify-between items-center mb-20 animate-reveal">
           <div className="text-white font-black tracking-tighter text-xl italic underline decoration-blue-500 underline-offset-4">
             DS.
