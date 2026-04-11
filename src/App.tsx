@@ -100,71 +100,82 @@ function App() {
   ]);
 
   return (
-    <div className="min-h-screen bg-black text-gray-100 p-8 font-sans selection:bg-blue-500/30">
+    <div className="min-h-screen bg-black text-gray-100 p-8 font-sans selection:bg-blue-500/30 overflow-x-hidden">
+      {/* KUNCI ANIMASI SMOOTH ALA CREADIN */}
       <style>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+        @keyframes revealUp {
+          0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
-        .animate-fade-in-up {
-          animation: fadeInUp 1s ease-out forwards;
+
+        .animate-reveal {
+          animation: revealUp 1.2s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
         }
-        .tooltip-container:hover .tooltip-text {
-          visibility: visible;
-          opacity: 1;
-        }
+
+        /* Delay buat tiap baris biar munculnya gantian */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
       `}</style>
 
-      {/* HEADER SECTION */}
-      <header className="max-w-6xl mx-auto mb-16 animate-fade-in-up">
-        <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent tracking-tighter">
-          DWIKY SUMARLIN
-        </h1>
-        <p className="text-gray-500 text-lg md:text-xl mt-4 font-medium uppercase tracking-widest">
-          Informatics Graduate | Aspiring Data Scientist
-        </p>
-
-        <div className="flex gap-8 mt-10 py-6 border-y border-gray-900 w-fit">
-          <div>
-            <p className="text-white font-bold text-2xl">1</p>
-            <p className="text-gray-500 text-[10px] uppercase tracking-[0.2em]">
-              IEEE Paper
-            </p>
+      {/* HEADER / HERO SECTION */}
+      <header className="max-w-6xl mx-auto pt-24 pb-16">
+        <div className="flex justify-between items-center mb-20 animate-reveal">
+          <div className="text-white font-black tracking-tighter text-xl italic underline decoration-blue-500 underline-offset-4">
+            DS.
           </div>
-          <div className="border-x border-gray-800 px-8">
-            <p className="text-white font-bold text-2xl">5+</p>
-            <p className="text-gray-500 text-[10px] uppercase tracking-[0.2em]">
-              AI Projects
-            </p>
-          </div>
-          <div>
-            <p className="text-white font-bold text-2xl">Distinction</p>
-            <p className="text-gray-500 text-[10px] uppercase tracking-[0.2em]">
-              Bangkit '25
-            </p>
-          </div>
+          <nav className="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500">
+            <a href="#projects" className="hover:text-white transition">
+              Projects
+            </a>
+            <a href="#research" className="hover:text-white transition">
+              Research
+            </a>
+            <a href="#contact" className="hover:text-white transition">
+              Contact
+            </a>
+          </nav>
         </div>
 
-        <div className="flex flex-wrap gap-4 mt-10">
-          <a
-            href="https://www.linkedin.com/in/dwiky-sumarlin/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-gray-900 border border-gray-800 rounded-2xl text-sm font-bold hover:border-blue-500 transition-all"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/dwkysss"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-gray-900 border border-gray-800 rounded-2xl text-sm font-bold hover:border-emerald-500 transition-all"
-          >
-            GitHub
-          </a>
-          <button className="px-6 py-3 bg-blue-600 rounded-2xl text-sm font-bold hover:bg-blue-500 transition-transform active:scale-95">
-            Download CV
-          </button>
+        <div className="space-y-4">
+          <span className="text-blue-500 font-bold text-xs uppercase tracking-[0.5em] mb-4 block animate-reveal delay-1">
+            Available for Work
+          </span>
+          {/* Teks Utama dengan efek Reveal */}
+          <h1 className="text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter animate-reveal delay-2">
+            DESIGNING <br />
+            <span className="text-gray-800">INTELLIGENT</span> <br />
+            SOLUTIONS.
+          </h1>
+        </div>
+
+        <div className="mt-12 flex flex-col md:flex-row md:items-end justify-between gap-8 animate-reveal delay-3">
+          <p className="max-w-md text-gray-500 text-lg leading-relaxed font-light">
+            Dwiky Sumarlin — Lulusan Informatika yang berfokus pada{" "}
+            <span className="text-gray-300">Computer Vision</span> dan{" "}
+            <span className="text-gray-300">Data Science</span>.
+          </p>
+
+          <div className="flex gap-4 items-center">
+            <a
+              href="https://github.com/dwkysss"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 flex items-center justify-center border border-gray-800 rounded-full hover:bg-white hover:text-black transition-all duration-500"
+            >
+              <svg
+                width="20"
+                height="20"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+              </svg>
+            </a>
+            <button className="px-10 py-5 bg-white text-black font-bold rounded-full hover:scale-105 transition-all duration-300">
+              Let's Talk
+            </button>
+          </div>
         </div>
       </header>
 
