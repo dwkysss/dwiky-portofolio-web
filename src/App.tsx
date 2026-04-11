@@ -2,18 +2,23 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [projects, setProjects] = useState([]);
-  const [experiences, setExperiences] = useState([]); // 1. State buat experience
+  const [experiences, setExperiences] = useState([]);
+
+  // GANTI BAGIAN INI: Gunakan link Railway kamu
+  const API_URL = "https://dwiky-portofolio-api-production.up.railway.app";
 
   useEffect(() => {
-    // Ambil Projects
-    fetch("http://localhost:3000/projects")
+    // Ambil Projects dari Railway
+    fetch(`${API_URL}/projects`)
       .then((res) => res.json())
-      .then((data) => setProjects(data));
+      .then((data) => setProjects(data))
+      .catch((err) => console.error("Error projects:", err));
 
-    // 2. Ambil Experiences
-    fetch("http://localhost:3000/experiences")
+    // Ambil Experiences dari Railway
+    fetch(`${API_URL}/experiences`)
       .then((res) => res.json())
-      .then((data) => setExperiences(data));
+      .then((data) => setExperiences(data))
+      .catch((err) => console.error("Error exp:", err));
   }, []);
 
   return (
