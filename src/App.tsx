@@ -181,24 +181,38 @@ function App() {
             {Object.entries(techStack).map(([category, items], i) => (
               <div
                 key={category}
-                className="p-6 rounded-3xl border border-gray-800 bg-gray-900/20"
+                className="p-6 rounded-3xl border border-gray-800 bg-gray-900/20 hover:border-gray-700 transition-all duration-300 group/card"
               >
-                <h3 className="text-[10px] font-black uppercase tracking-widest mb-6 text-gray-500">
+                {/* Judul Kategori dengan Warna Berbeda */}
+                <h3
+                  className={`text-[10px] font-black uppercase tracking-widest mb-6 ${
+                    i === 0
+                      ? "text-purple-400"
+                      : i === 1
+                        ? "text-blue-400"
+                        : i === 2
+                          ? "text-emerald-400"
+                          : "text-orange-400"
+                  }`}
+                >
                   {category}
                 </h3>
+
+                {/* Barisan Logo */}
                 <div className="flex flex-wrap gap-5">
                   {items.map((tech) => (
                     <div
                       key={tech.name}
-                      className="tooltip-container relative group"
+                      className="tooltip-container relative group/icon"
                     >
                       <img
                         src={tech.icon}
                         alt={tech.name}
-                        className="h-7 w-auto grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 cursor-help"
+                        className="h-7 w-auto grayscale opacity-50 group-hover/icon:grayscale-0 group-hover/icon:opacity-100 group-hover/icon:scale-110 transition-all duration-300 cursor-help"
                       />
-                      {/* TOOLTIP TEXT */}
-                      <span className="tooltip-text invisible opacity-0 absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-[10px] rounded pointer-events-none transition-all duration-300 whitespace-nowrap border border-gray-700">
+
+                      {/* TOOLTIP TEXT (Muncul saat hover logo) */}
+                      <span className="tooltip-text invisible opacity-0 absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-gray-800 text-white text-[10px] font-bold rounded-lg pointer-events-none transition-all duration-300 whitespace-nowrap border border-gray-700 shadow-2xl z-50">
                         {tech.name}
                       </span>
                     </div>
