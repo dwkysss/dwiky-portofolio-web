@@ -1,11 +1,33 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+// KOMPONEN SALJU JATUH
+const Snowfall = () => {
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {[...Array(30)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute bg-white rounded-full opacity-20 animate-snow"
+          style={{
+            width: `${Math.random() * 4 + 2}px`,
+            height: `${Math.random() * 4 + 2}px`,
+            left: `${Math.random() * 100}%`,
+            animationDuration: `${Math.random() * 10 + 5}s`,
+            animationDelay: `${Math.random() * 5}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 function App() {
+  // Logic untuk Scroll Parallax
   const { scrollY } = useScroll();
-  const textOpacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const textY = useTransform(scrollY, [0, 300], [0, -100]);
-  // Metadata Logic
+  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const heroY = useTransform(scrollY, [0, 400], [0, -100]);
+
   useEffect(() => {
     document.title = "Dwiky Sumarlin | Informatics Graduate & AI Researcher";
   }, []);
@@ -45,10 +67,7 @@ function App() {
   const techStack = {
     languages: [
       { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB" },
-      {
-        name: "Java",
-        icon: "public/java.svg",
-      },
+      { name: "Java", icon: "/java.svg" },
       {
         name: "TypeScript",
         icon: "https://cdn.simpleicons.org/typescript/3178C6",
@@ -106,49 +125,55 @@ function App() {
   ]);
 
   return (
-    <div className="min-h-screen bg-black text-gray-100 font-sans selection:bg-blue-500/30 overflow-x-hidden">
+    <div className="min-h-screen bg-black text-gray-100 font-sans selection:bg-blue-500/30 overflow-x-hidden relative">
+      <Snowfall />
+
       <style>{`
         @keyframes revealUp {
           0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
           100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
+        @keyframes snow {
+          0% { transform: translateY(-10vh) translateX(0); }
+          25% { transform: translateY(20vh) translateX(15px); }
+          50% { transform: translateY(50vh) translateX(-15px); }
+          75% { transform: translateY(80vh) translateX(15px); }
+          100% { transform: translateY(110vh) translateX(0); }
+        }
         .animate-reveal { animation: revealUp 1.2s cubic-bezier(0.2, 0.6, 0.2, 1) forwards; }
+        .animate-snow { animation: snow linear infinite; }
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.3s; }
         .delay-3 { animation-delay: 0.5s; }
         .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
       `}</style>
 
-      {/* HEADER / HERO SECTION - Cinematic Style */}
-      <header className="relative w-full h-screen flex flex-col justify-center max-w-6xl mx-auto px-8 overflow-hidden">
-        {/* Navigasi tetep sama */}
-        <div className="absolute top-16 left-8 right-8 flex justify-between items-center z-50">
-          <div className="text-white font-black tracking-tighter text-2xl border-b-2 border-blue-500">
+      {/* HEADER / HERO SECTION */}
+      <header className="relative w-full min-h-[100vh] flex flex-col justify-center max-w-6xl mx-auto px-8">
+        <div className="absolute top-16 left-8 right-8 flex justify-between items-center animate-reveal z-50">
+          <div className="text-white font-black tracking-tighter text-2xl border-b-2 border-blue-500 cursor-default hover:skew-x-12 transition-transform">
             DS.
           </div>
           <nav className="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.4em] font-black text-gray-500">
-            <a href="#stack" className="hover:text-white transition-all">
-              Stack
-            </a>
-            <a href="#projects" className="hover:text-white transition-all">
-              Projects
-            </a>
-            <a href="#research" className="hover:text-white transition-all">
-              Research
-            </a>
+            {["Stack", "Projects", "Research"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="hover:text-white transition-all duration-300 hover:tracking-[0.6em]"
+              >
+                {item}
+              </a>
+            ))}
           </nav>
         </div>
 
-        {/* Teks Hero dengan Framer Motion */}
         <motion.div
-          style={{ opacity: textOpacity, y: textY }}
-          className="relative z-10"
+          style={{ opacity: heroOpacity, y: heroY }}
+          className="relative pt-20"
         >
           <span className="text-blue-500 font-bold text-xs uppercase tracking-[0.6em] mb-8 block animate-reveal delay-1">
             Available for Work
           </span>
-
-          {/* Efek Text Reveal */}
           <h1 className="text-6xl md:text-[115px] font-black text-white leading-[0.8] tracking-tighter cursor-default">
             <motion.span
               initial={{ clipPath: "inset(100% 0 0 0)" }}
@@ -157,11 +182,11 @@ function App() {
               className="inline-block"
             >
               DESIGNING
-            </motion.span>
+            </motion.span>{" "}
             <br />
             <span className="text-gray-800 hover:text-gray-700 transition-colors duration-700">
               INTELLIGENT
-            </span>
+            </span>{" "}
             <br />
             <motion.span
               initial={{ clipPath: "inset(100% 0 0 0)" }}
@@ -172,49 +197,46 @@ function App() {
               SOLUTIONS.
             </motion.span>
           </h1>
-        </motion.div>
 
-        {/* Deskripsi bawah Hero */}
-        <motion.div
-          style={{ opacity: textOpacity }}
-          className="mt-20 flex flex-col md:flex-row md:items-end justify-between gap-16"
-        >
-          <p className="max-w-md text-gray-500 text-xl leading-relaxed font-light">
-            Dwiky Sumarlin — Informatics Graduate focusing on{" "}
-            <span className="text-gray-200 font-semibold underline decoration-blue-500 underline-offset-4">
-              Computer Vision
-            </span>{" "}
-            and{" "}
-            <span className="text-gray-200 font-semibold underline decoration-cyan-500 underline-offset-4">
-              Data Science
-            </span>
-            .
-          </p>
+          <div className="mt-20 flex flex-col md:flex-row md:items-end justify-between gap-16 animate-reveal delay-3">
+            <p className="max-w-md text-gray-500 text-xl leading-relaxed font-light">
+              Dwiky Sumarlin — Informatics Graduate focusing on{" "}
+              <span className="text-gray-200 font-semibold underline decoration-blue-500 underline-offset-4">
+                Computer Vision
+              </span>{" "}
+              and{" "}
+              <span className="text-gray-200 font-semibold underline decoration-cyan-500 underline-offset-4">
+                Data Science
+              </span>
+              .
+            </p>
 
-          <div className="flex gap-8 items-center">
-            <a
-              href="https://github.com/dwkysss"
-              target="_blank"
-              className="w-16 h-16 flex items-center justify-center border border-gray-800 rounded-full hover:bg-white hover:text-black transition-all duration-700"
-            >
-              <svg
-                width="24"
-                height="24"
-                fill="currentColor"
-                viewBox="0 0 16 16"
+            <div className="flex gap-8 items-center">
+              <a
+                href="https://github.com/dwkysss"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-16 h-16 flex items-center justify-center border border-gray-800 rounded-full hover:bg-white hover:text-black hover:rotate-[360deg] transition-all duration-700 shadow-2xl"
               >
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-              </svg>
-            </a>
-            <button className="px-14 py-6 bg-white text-black font-black rounded-full hover:scale-105 transition-all">
-              Let's Talk
-            </button>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+              </a>
+              <button className="px-14 py-6 bg-white text-black font-black rounded-full hover:scale-110 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                Let's Talk
+              </button>
+            </div>
           </div>
         </motion.div>
       </header>
 
       {/* MAIN CONTENT SECTION */}
-      <main className="max-w-6xl mx-auto px-8 py-20 space-y-32 relative">
+      <main className="max-w-6xl mx-auto px-8 py-20 space-y-32 relative z-10">
         {/* TECH STACK */}
         <section id="stack" className="scroll-mt-32">
           <h2 className="text-2xl font-bold mb-12 flex items-center gap-4 group cursor-default">
@@ -225,7 +247,7 @@ function App() {
             {Object.entries(techStack).map(([category, items], i) => (
               <div
                 key={category}
-                className="p-10 rounded-[2rem] border border-gray-900 bg-gray-950 hover:border-gray-700 hover:-translate-y-3 transition-all duration-500 group/card shadow-xl"
+                className="p-10 rounded-[2rem] border border-gray-900 bg-gray-950/80 backdrop-blur-sm hover:border-gray-700 hover:-translate-y-3 transition-all duration-500 group/card shadow-xl"
               >
                 <h3
                   className={`text-[10px] font-black uppercase tracking-[0.2em] mb-10 ${
@@ -272,7 +294,7 @@ function App() {
             {projects.map((p) => (
               <div
                 key={p.id}
-                className="group p-12 rounded-[3rem] border border-gray-800 bg-gray-950 hover:border-blue-500/30 hover:scale-[1.02] transition-all duration-700 shadow-2xl relative overflow-hidden"
+                className="group p-12 rounded-[3rem] border border-gray-800 bg-gray-950/80 backdrop-blur-sm hover:border-blue-500/30 hover:scale-[1.02] transition-all duration-700 shadow-2xl relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <h3 className="text-3xl font-black text-white mb-6 group-hover:text-blue-400 transition-colors duration-500">
@@ -302,7 +324,7 @@ function App() {
             <span className="h-px w-12 bg-orange-500 group-hover:w-24 transition-all duration-500"></span>{" "}
             Research
           </h2>
-          <div className="group bg-gray-950 p-12 rounded-[3.5rem] border border-gray-900 hover:border-orange-500/20 hover:-translate-y-2 transition-all duration-700 shadow-2xl">
+          <div className="group bg-gray-950/80 backdrop-blur-sm p-12 rounded-[3.5rem] border border-gray-900 hover:border-orange-500/20 hover:-translate-y-2 transition-all duration-700 shadow-2xl">
             <div className="flex flex-col lg:flex-row justify-between items-start gap-12">
               <div className="flex-1">
                 <span className="px-5 py-2 rounded-full text-[10px] font-black bg-orange-500/10 text-orange-400 border border-orange-500/10 uppercase tracking-[0.3em]">
@@ -323,10 +345,8 @@ function App() {
                   View Publication <span>→</span>
                 </a>
               </div>
-              <div className="hidden lg:flex w-56 h-56 bg-white/[0.02] rounded-[3rem] items-center justify-center border border-white/5 rotate-3 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700">
-                <span className="text-6xl font-black text-white/5 group-hover:text-white/20 transition-all">
-                  IEEE
-                </span>
+              <div className="hidden lg:flex w-56 h-56 bg-white/[0.02] rounded-[3rem] items-center justify-center border border-white/5 rotate-3 group-hover:rotate-0 transition-all duration-700">
+                <span className="text-6xl font-black text-white/5">IEEE</span>
               </div>
             </div>
           </div>
@@ -370,7 +390,7 @@ function App() {
               <span className="h-px w-12 bg-yellow-500 group-hover:w-24 transition-all duration-500"></span>{" "}
               Education
             </h2>
-            <div className="bg-gray-950 p-14 rounded-[3rem] border border-gray-900 hover:border-yellow-500/20 hover:scale-[1.01] transition-all duration-700 shadow-2xl">
+            <div className="bg-gray-950/80 backdrop-blur-sm p-14 rounded-[3rem] border border-gray-900 hover:border-yellow-500/20 hover:scale-[1.01] transition-all duration-700 shadow-2xl">
               <h3 className="text-3xl font-black text-white mb-4 leading-tight">
                 Universitas Jenderal Achmad Yani
               </h3>
@@ -396,7 +416,7 @@ function App() {
         </div>
       </main>
 
-      <footer className="max-w-6xl mx-auto px-8 py-32 border-t border-gray-900 text-center">
+      <footer className="max-w-6xl mx-auto px-8 py-32 border-t border-gray-900 text-center relative z-10">
         <p className="text-gray-600 text-[10px] font-bold uppercase tracking-[0.8em] hover:tracking-[1em] transition-all duration-700 cursor-default">
           Dwiky Sumarlin <span className="text-gray-800 mx-4">•</span> 2026
         </p>
