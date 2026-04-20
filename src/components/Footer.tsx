@@ -41,7 +41,10 @@ const Footer = () => {
       </section>
 
       {/* FOOTER MAIN - Tetap Biru Gacor */}
-      <footer className="relative bg-blue-600 text-black px-8 pt-20 pb-10 rounded-t-[3rem] md:rounded-t-[5rem] overflow-hidden">
+      <footer
+        id="footer"
+        className="relative bg-blue-600 text-black px-8 pt-20 pb-10 rounded-t-[3rem] md:rounded-t-[5rem] overflow-hidden"
+      >
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between gap-16 mb-20">
             <div className="flex-1">

@@ -14,7 +14,7 @@ const Hero = ({ heroOpacity, heroY }: HeroProps) => {
         className="relative"
       >
         <span className="text-blue-600 dark:text-blue-500 font-bold text-xs uppercase tracking-[0.6em] mb-10 block animate-reveal delay-1">
-          Available for Work
+          Open for Collaboration
         </span>
 
         {/* text-gray-900 (Light) | dark:text-white (Dark) */}
@@ -48,13 +48,12 @@ const Hero = ({ heroOpacity, heroY }: HeroProps) => {
           <p className="max-w-2xl text-gray-600 dark:text-gray-500 text-xl leading-relaxed font-light transition-colors">
             Dwiky Sumarlin — Informatics Graduate focusing on{" "}
             <span className="text-gray-900 dark:text-gray-200 font-semibold underline decoration-blue-500 underline-offset-4 whitespace-nowrap">
-              Data Science
+              Data Science,
             </span>{" "}
-            ,{" "}
             <span className="text-gray-900 dark:text-gray-200 font-semibold underline decoration-blue-500 underline-offset-4 whitespace-nowrap">
-              Machine Learning
+              Machine Learning,
             </span>{" "}
-            , and{" "}
+            and{" "}
             <span className="text-gray-900 dark:text-gray-200 font-semibold underline decoration-cyan-500 underline-offset-4 whitespace-nowrap">
               FullStack Development
             </span>
@@ -79,11 +78,14 @@ const Hero = ({ heroOpacity, heroY }: HeroProps) => {
               </svg>
             </a>
             <a
-              href="https://wa.me/6283816377730?text=Halo%20Dwiky,%20saya%20tertarik%20bekerja%20sama%20dengan%20anda!"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#footer"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .querySelector("#footer")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
-              {/* Button: bg-gray-900 (Light) | dark:bg-white (Dark) */}
               <button className="px-14 py-6 bg-gray-900 dark:bg-white text-white dark:text-black font-black rounded-full hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg dark:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
                 Let's Talk
               </button>
