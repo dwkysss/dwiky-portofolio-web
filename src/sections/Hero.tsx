@@ -18,7 +18,7 @@ const Hero = ({ heroOpacity, heroY }: HeroProps) => {
         </span>
 
         {/* text-gray-900 (Light) | dark:text-white (Dark) */}
-        <h1 className="text-6xl md:text-[115px] font-black text-gray-900 dark:text-white leading-[0.85] tracking-tighter cursor-default -mt-4 md:-mt-8 transition-colors duration-500">
+        <h1 className="text-5xl md:text-[115px] font-black text-gray-900 dark:text-white leading-[0.85] tracking-tighter cursor-default -mt-4 md:-mt-8 transition-colors duration-500">
           <motion.span
             initial={{ clipPath: "inset(100% 0 0 0)" }}
             animate={{ clipPath: "inset(0% 0 0 0)" }}

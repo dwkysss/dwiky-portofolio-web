@@ -2,9 +2,11 @@
 
 const Services = () => {
   return (
-    <section id="services" className="reveal-on-scroll scroll-mt-32 transition-colors duration-500">
+    <section
+      id="services"
+      className="reveal-on-scroll scroll-mt-32 transition-colors duration-500"
+    >
       <div className="flex flex-col lg:flex-row gap-12 items-center">
-        
         {/* SISI KIRI: List Keahlian */}
         <div className="flex-1 w-full">
           <div className="mb-10">
@@ -84,27 +86,46 @@ const Services = () => {
         {/* SISI KANAN: Bento Cards */}
         <div className="flex flex-col gap-6 w-full lg:w-72">
           {/* Card Quote: Putih di Light, Gelap di Dark */}
-          <div className="p-8 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-[2.5rem] hover:border-blue-500 dark:hover:border-gray-600 transition-all shadow-md dark:shadow-none">
+          <div
+            onClick={() => {
+              document
+                .querySelector("#projects")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="p-8 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-[2.5rem] hover:border-blue-500 dark:hover:border-blue-500/50 transition-all shadow-md dark:shadow-none cursor-pointer group active:scale-[0.98]"
+          >
             <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 font-light italic">
               "Innovation distinguishes between a leader and a follower."
             </p>
-            <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4 leading-tight transition-colors">
+
+            <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4 leading-tight transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">
               See how I build things
             </h4>
-            <div className="w-10 h-10 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white rounded-full flex items-center justify-center rotate-45 transition-colors">
+
+            {/* Icon Panah: Pas card di-hover, warna background dan rotasinya berubah bray */}
+            <div className="w-10 h-10 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white rounded-full flex items-center justify-center rotate-45 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white group-hover:rotate-90">
               →
             </div>
           </div>
 
-          {/* Card CTA: Tetap Biru (Brand Identity) tapi shadow disesuaikan */}
-          <div className="p-8 bg-blue-600 rounded-[2.5rem] hover:scale-[1.03] transition-all shadow-xl shadow-blue-500/20 dark:shadow-blue-500/10">
+          {/* Card CTA: Navigasi ke Footer */}
+          <div
+            onClick={() => {
+              document
+                .querySelector("#footer")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="p-8 bg-blue-600 rounded-[2.5rem] hover:scale-[1.03] active:scale-[0.98] transition-all shadow-xl shadow-blue-500/20 dark:shadow-blue-500/10 cursor-pointer group"
+          >
             <p className="text-blue-100 text-sm mb-6 font-bold uppercase tracking-widest">
               Let's Connect
             </p>
             <h4 className="text-2xl font-black text-white mb-6 leading-tight">
               Ready for new challenges?
             </h4>
-            <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:rotate-12 transition-transform">
+
+            {/* Button Panah: Gue tambahin group-hover biar pas card disentuh, panahnya ikut bereaksi */}
+            <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
               <span className="text-black font-bold -rotate-45 text-xl">→</span>
             </button>
           </div>
