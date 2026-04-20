@@ -8,16 +8,17 @@ interface HeroProps {
 
 const Hero = ({ heroOpacity, heroY }: HeroProps) => {
   return (
-    <header className="relative w-full min-h-[100vh] flex flex-col justify-center max-w-6xl mx-auto px-8 pt-10 md:pt-14">
+    <header className="relative w-full min-h-[100vh] flex flex-col justify-center max-w-6xl mx-auto px-8 pt-10 md:pt-14 transition-colors duration-500">
       <motion.div
         style={{ opacity: heroOpacity, y: heroY }}
         className="relative"
       >
-        <span className="text-blue-500 font-bold text-xs uppercase tracking-[0.6em] mb-10 block animate-reveal delay-1">
+        <span className="text-blue-600 dark:text-blue-500 font-bold text-xs uppercase tracking-[0.6em] mb-10 block animate-reveal delay-1">
           Available for Work
         </span>
 
-        <h1 className="text-6xl md:text-[115px] font-black text-white leading-[0.85] tracking-tighter cursor-default -mt-4 md:-mt-8">
+        {/* text-gray-900 (Light) | dark:text-white (Dark) */}
+        <h1 className="text-6xl md:text-[115px] font-black text-gray-900 dark:text-white leading-[0.85] tracking-tighter cursor-default -mt-4 md:-mt-8 transition-colors duration-500">
           <motion.span
             initial={{ clipPath: "inset(100% 0 0 0)" }}
             animate={{ clipPath: "inset(0% 0 0 0)" }}
@@ -27,7 +28,8 @@ const Hero = ({ heroOpacity, heroY }: HeroProps) => {
             DESIGNING
           </motion.span>
           <br />
-          <span className="text-gray-800 hover:text-gray-700 transition-colors duration-700 inline-block py-1">
+          {/* Warna INTELLIGENT disesuaikan biar gak tenggelam di light mode */}
+          <span className="text-gray-400 dark:text-gray-800 hover:text-blue-600 dark:hover:text-gray-700 transition-colors duration-700 inline-block py-1">
             INTELLIGENT
           </span>
           <br />
@@ -42,28 +44,30 @@ const Hero = ({ heroOpacity, heroY }: HeroProps) => {
         </h1>
 
         <div className="mt-14 flex flex-col md:flex-row md:items-end justify-between gap-16 animate-reveal delay-3">
-          <p className="max-w-2xl text-gray-500 text-xl leading-relaxed font-light">
+          {/* Deskripsi text-gray-600 (Light) | dark:text-gray-500 (Dark) */}
+          <p className="max-w-2xl text-gray-600 dark:text-gray-500 text-xl leading-relaxed font-light transition-colors">
             Dwiky Sumarlin — Informatics Graduate focusing on{" "}
-            <span className="text-gray-200 font-semibold underline decoration-blue-500 underline-offset-4 whitespace-nowrap">
+            <span className="text-gray-900 dark:text-gray-200 font-semibold underline decoration-blue-500 underline-offset-4 whitespace-nowrap">
               Data Science
             </span>{" "}
             ,{" "}
-            <span className="text-gray-200 font-semibold underline decoration-blue-500 underline-offset-4 whitespace-nowrap">
+            <span className="text-gray-900 dark:text-gray-200 font-semibold underline decoration-blue-500 underline-offset-4 whitespace-nowrap">
               Machine Learning
             </span>{" "}
             , and{" "}
-            <span className="text-gray-200 font-semibold underline decoration-cyan-500 underline-offset-4 whitespace-nowrap">
+            <span className="text-gray-900 dark:text-gray-200 font-semibold underline decoration-cyan-500 underline-offset-4 whitespace-nowrap">
               FullStack Development
             </span>
             .
           </p>
 
           <div className="flex gap-8 items-center shrink-0">
+            {/* GitHub Button: border-gray-300 (Light) | dark:border-gray-800 (Dark) */}
             <a
               href="https://github.com/dwkysss"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-16 h-16 flex items-center justify-center border border-gray-800 rounded-full hover:bg-white hover:text-black hover:rotate-[360deg] transition-all duration-700 shadow-2xl"
+              className="w-16 h-16 flex items-center justify-center border border-gray-300 dark:border-gray-800 rounded-full hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-black hover:rotate-[360deg] transition-all duration-700 shadow-xl dark:shadow-2xl text-gray-900 dark:text-white"
             >
               <svg
                 width="24"
@@ -79,7 +83,8 @@ const Hero = ({ heroOpacity, heroY }: HeroProps) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="px-14 py-6 bg-white text-black font-black rounded-full hover:scale-110 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+              {/* Button: bg-gray-900 (Light) | dark:bg-white (Dark) */}
+              <button className="px-14 py-6 bg-gray-900 dark:bg-white text-white dark:text-black font-black rounded-full hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg dark:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
                 Let's Talk
               </button>
             </a>

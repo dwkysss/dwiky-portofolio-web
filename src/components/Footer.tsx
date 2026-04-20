@@ -4,24 +4,27 @@ const Footer = () => {
   return (
     <>
       {/* SECTION READY TO SCALE / CTA */}
-      <section className="py-40 text-center relative overflow-hidden reveal-on-scroll">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+      <section className="py-40 text-center relative overflow-hidden reveal-on-scroll transition-colors duration-500">
+        {/* Glow effect yang menyesuaikan mode bray */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/10 dark:bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="relative z-10">
-          <h2 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
-            Ready to <span className="text-blue-500 italic">Scale?</span>
+          {/* text-gray-900 (Light) | dark:text-white (Dark) */}
+          <h2 className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white mb-8 tracking-tighter transition-colors">
+            Ready to <span className="text-blue-600 italic">Scale?</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-gray-500 text-lg md:text-xl font-light leading-relaxed mb-12 px-6">
+          <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-500 text-lg md:text-xl font-light leading-relaxed mb-12 px-6">
             Let's turn your vision into a digital masterpiece. Dwiky is ready to
             bring your boldest ideas to life with AI and modern tech.
           </p>
           <div className="flex justify-center">
             <a
               href="mailto:dwikysumarlin01@gmail.com"
-              className="group relative inline-flex items-center gap-4 px-12 py-6 bg-white text-black font-black rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_20px_50px_rgba(255,255,255,0.1)]"
+              /* Tombol adaptif: bg-black (Light) | dark:bg-white (Dark) */
+              className="group relative inline-flex items-center gap-4 px-12 py-6 bg-gray-900 dark:bg-white text-white dark:text-black font-black rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl dark:shadow-[0_20px_50px_rgba(255,255,255,0.1)]"
             >
               <span>Let's Work Together</span>
-              <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
+              <div className="w-8 h-8 bg-white dark:bg-black text-black dark:text-white rounded-full flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path
                     d="M4.5 11.5L11.5 4.5M11.5 4.5H4.5M11.5 4.5V11.5"
@@ -37,7 +40,7 @@ const Footer = () => {
         </div>
       </section>
 
-      {/* FOOTER MAIN */}
+      {/* FOOTER MAIN - Tetap Biru Gacor */}
       <footer className="relative bg-blue-600 text-black px-8 pt-20 pb-10 rounded-t-[3rem] md:rounded-t-[5rem] overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between gap-16 mb-20">
@@ -54,7 +57,7 @@ const Footer = () => {
                 LET'S <br /> CONNECT
               </h2>
               <a
-                href="https://wa.me/083816377730"
+                href="https://wa.me/6283816377730"
                 className="inline-flex items-center gap-4 px-8 py-4 bg-black text-white rounded-full font-bold hover:scale-105 transition-all shadow-xl"
               >
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>{" "}
@@ -63,12 +66,13 @@ const Footer = () => {
             </div>
 
             <div className="w-full lg:w-[450px]">
-              <div className="bg-black/5 backdrop-blur-sm rounded-[2.5rem] p-8 md:p-12 space-y-10">
+              {/* Box social links sedikit lebih gelap di light mode biar kontras di atas biru */}
+              <div className="bg-black/10 backdrop-blur-md rounded-[2.5rem] p-8 md:p-12 space-y-10 border border-black/5">
                 {[
                   {
                     label: "Instagram",
-                    handle: "@dwikysmrln",
-                    url: "https://instagram.com/dwikysmrln",
+                    handle: "@dwkysmrln",
+                    url: "https://instagram.com/dwkysmrln",
                     icon: "https://cdn.simpleicons.org/instagram/black",
                   },
                   {
