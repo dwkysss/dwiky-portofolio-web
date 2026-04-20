@@ -74,8 +74,8 @@ const Footer = () => {
                 {[
                   {
                     label: "Instagram",
-                    handle: "@dwkysmrln",
-                    url: "https://instagram.com/dwkysmrln",
+                    handle: "@dwikysmrln",
+                    url: "https://instagram.com/dwikysmrln",
                     icon: "https://cdn.simpleicons.org/instagram/black",
                   },
                   {
