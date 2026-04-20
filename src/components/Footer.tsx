@@ -78,6 +78,7 @@ const Footer = () => {
 
             {/* SOCIAL LINKS BOX */}
             <div className="w-full lg:w-[450px]">
+              {/* Box social links sedikit lebih gelap di light mode biar kontras di atas biru */}
               <div className="bg-black/10 backdrop-blur-md rounded-[2.5rem] p-8 md:p-12 space-y-10 border border-black/5">
                 {[
                   {
@@ -121,22 +122,25 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-6 group"
                   >
-                    <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-all text-black shrink-0">
+                    {/* Ukuran icon sedikit gue perkecil juga bray biar balance */}
+                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-all text-black shrink-0">
                       {typeof social.icon === "string" ? (
                         <img
                           src={social.icon}
                           alt={social.label}
-                          className="w-6 h-6"
+                          className="w-5 h-5"
                         />
                       ) : (
-                        social.icon
+                        <div className="scale-90">{social.icon}</div>
                       )}
                     </div>
                     <div>
-                      <h4 className="font-black text-xl leading-none">
+                      {/* Label diturunin ke text-lg */}
+                      <h4 className="font-black text-lg leading-none transition-colors">
                         {social.label}
                       </h4>
-                      <p className="text-black/60 text-sm font-bold mt-1">
+                      {/* Handle diturunin ke text-xs dan font-medium biar lebih slick */}
+                      <p className="text-black/60 text-xs font-medium mt-1.5 break-all">
                         {social.handle}
                       </p>
                     </div>
