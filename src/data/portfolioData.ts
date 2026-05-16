@@ -37,8 +37,8 @@ export const projectsData = [
     id: 3,
     title: "Sistem Manajemen Masjid Terpadu (Microservices)",
     description:
-      "Platform manajemen jadwal Khutbah dan Kajian berskala produksi berbasis microservices. Dilengkapi integrasi Google Cloud Storage (GCS) untuk manajemen aset, sistem Gateway terpusat, dan di-deploy sepenuhnya di atas infrastruktur serverless Google Cloud Run.",
-    githubUrl: "https://github.com/dwkysss/manajemen-masjid-microservices",
+      "Platform manajemen masjid terintegrasi berbasis Microservices. Mengelola inventaris aset, jadwal khutbah real-time, dan transparansi keuangan umat.",
+    githubUrl: "https://api-gateway-9225665346.asia-southeast2.run.app/",
     techStackLogos: [
       {
         name: "React",
@@ -47,6 +47,10 @@ export const projectsData = [
       {
         name: "Laravel",
         url: "https://cdn.simpleicons.org/laravel/FF2D20",
+      },
+      {
+        name: "MySQL",
+        url: "https://cdn.simpleicons.org/mysql/4479A1",
       },
       {
         name: "Google Cloud",
