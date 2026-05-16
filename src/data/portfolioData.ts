@@ -35,21 +35,27 @@ export const projectsData = [
   },
   {
     id: 3,
-    title: "Warung Digital Inventory System",
+    title: "Sistem Manajemen Masjid Terpadu (Microservices)",
     description:
-      "Sistem manajemen inventaris dan transaksi real-time untuk toko kelontong, mengintegrasikan Google Sheets sebagai database cloud yang ringan.",
-    githubUrl: "https://github.com/dwkysss/warung-digital",
+      "Platform manajemen jadwal Khutbah dan Kajian berskala produksi berbasis microservices. Dilengkapi integrasi Google Cloud Storage (GCS) untuk manajemen aset, sistem Gateway terpusat, dan di-deploy sepenuhnya di atas infrastruktur serverless Google Cloud Run.",
+    githubUrl: "https://github.com/dwkysss/manajemen-masjid-microservices",
     techStackLogos: [
-      { name: "React", url: "https://cdn.simpleicons.org/react/61DAFB" },
       {
-        name: "Tailwind",
+        name: "React",
+        url: "https://cdn.simpleicons.org/react/61DAFB",
+      },
+      {
+        name: "Laravel",
+        url: "https://cdn.simpleicons.org/laravel/FF2D20",
+      },
+      {
+        name: "Google Cloud",
+        url: "https://cdn.simpleicons.org/googlecloud/4285F4",
+      },
+      {
+        name: "Tailwind CSS",
         url: "https://cdn.simpleicons.org/tailwindcss/06B6D4",
       },
-      {
-        name: "Google Sheets",
-        url: "https://cdn.simpleicons.org/googlesheets/34A853",
-      },
-      { name: "Node.js", url: "https://cdn.simpleicons.org/nodedotjs/339933" },
     ],
   },
   {
