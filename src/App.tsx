@@ -21,7 +21,7 @@ import {
 } from "./data/portfolioData";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Logic Toggle Mode & Inject CSS Variables (Tailwind v4 & Framer Motion Sync)
   useEffect(() => {
